@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LeadForm from '../components/LeadForm.astro';
+
+const faqs = [
+  {
+    question: "What should I do immediately after being hit by a delivery truck?",
+    answer: "First, call 911 and seek medical attention even if you feel fine. Document the scene with photos, including the delivery truck, company logos, license plate, and any visible damage. Get the driver's name, employer information, and insurance details. Collect witness contact info and file a police report. Note the delivery company (Amazon, FedEx, UPS, etc.) and any identifying numbers on the vehicle."
+  },
+  {
+    question: "Who is liable for Amazon delivery truck accidents?",
+    answer: "Amazon delivery accidents often involve complex liability. Amazon uses third-party Delivery Service Partners (DSPs) for last-mile delivery, and may try to shift blame to these contractors. However, Amazon can still be held liable under vicarious liability, agency theories, or if they negligently selected/supervised the DSP. Both the driver's employer (the DSP) and Amazon may be responsible for your damages."
+  },
+  {
+    question: "How are FedEx Ground and UPS truck accidents different from regular car accidents?",
+    answer: "Delivery trucks are commercial vehicles, which means: larger insurance policies (often $1M+), potential FMCSA regulation compliance issues, employer liability for driver negligence, electronic logging device (ELD) data, vehicle maintenance records, and corporate legal teams fighting claims. These cases require attorneys experienced with commercial vehicle accidents and the tactics large corporations use to minimize payouts."
+  },
+  {
+    question: "What is FMCSA and how does it affect my case?",
+    answer: "The Federal Motor Carrier Safety Administration (FMCSA) regulates commercial vehicles over 10,001 lbs. Larger delivery trucks must comply with hours-of-service limits, driver qualification requirements, drug/alcohol testing, and vehicle maintenance standards. FMCSA violations (like fatigued driving or overdue inspections) can strengthen your case by proving negligence."
+  },
+  {
+    question: "Can I sue the delivery company or just the driver?",
+    answer: "You can typically sue both. Under the legal doctrine of 'respondeat superior,' employers are liable for employees' negligent acts committed during work. Even with independent contractor drivers, the delivery company may be liable if they controlled how the driver performed their work, negligently hired/retained the driver, or failed to maintain the vehicle properly."
+  },
+  {
+    question: "What types of injuries are common in delivery truck accidents?",
+    answer: "Due to the size and weight of delivery trucks, injuries are often severe: traumatic brain injuries, spinal cord injuries and paralysis, broken bones and fractures, internal organ damage, crush injuries, burns, amputations, and wrongful death. Even 'minor' accidents with delivery vans can cause whiplash, herniated discs, and soft tissue injuries that require extensive treatment."
+  },
+  {
+    question: "How does insurance work for commercial delivery vehicles?",
+    answer: "Commercial delivery trucks carry much higher insurance limits than personal vehicles—often $1 million or more. Large companies like Amazon, FedEx, and UPS are typically self-insured or have umbrella policies. This means more money is available for your claim, but also that sophisticated claims adjusters and defense lawyers will fight aggressively to minimize payouts."
+  },
+  {
+    question: "How much does it cost to hire a delivery truck accident lawyer?",
+    answer: "Most delivery truck accident attorneys work on a contingency fee basis, meaning you pay nothing upfront. The attorney only gets paid if you win your case, typically taking a percentage (usually 33-40%) of your settlement or verdict. Initial consultations are free. Given the complexity of commercial vehicle cases, having an experienced attorney is crucial."
+  },
+  {
+    question: "What compensation can I receive for delivery truck accident injuries?",
+    answer: "You may be entitled to compensation for: medical bills (current and future), lost wages and loss of earning capacity, pain and suffering, property damage, permanent disability or disfigurement, emotional distress, loss of quality of life, and in cases of gross negligence, punitive damages. Commercial trucking cases often result in larger settlements due to the severity of injuries and higher insurance limits."
+  },
+  {
+    question: "How long do I have to file a delivery truck accident lawsuit?",
+    answer: "The statute of limitations varies by state—in Texas, it's generally 2 years from the date of the accident. However, you should act quickly. Delivery companies often have rapid response teams that investigate accidents immediately. Critical evidence like dashcam footage, driver logs, and maintenance records can be destroyed if not preserved through legal action."
+  },
+  {
+    question: "What if the delivery driver was speeding to meet quotas?",
+    answer: "This is a strong argument for employer liability. Companies like Amazon are known for aggressive delivery quotas that pressure drivers to speed, skip breaks, and take risks. If company policies contributed to the accident, both the driver and employer can be held liable. Evidence of unrealistic delivery expectations strengthens your case significantly."
+  },
+  {
+    question: "How long does a delivery truck accident case take to settle?",
+    answer: "Commercial vehicle cases typically take 6-24 months, sometimes longer for severe injuries. Factors affecting timeline include: the complexity of liability (multiple defendants), severity of injuries and ongoing treatment, corporate defendants' willingness to negotiate, whether litigation becomes necessary, and gathering evidence from the trucking company through discovery."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<BaseLayout 
+  title="FAQ | Delivery Truck Accident Lawyer"
+  description="Frequently asked questions about Amazon, FedEx, UPS delivery truck accident claims, commercial vehicle insurance, employer liability, and your legal rights."
+  schema={faqSchema}
+>
+  <section class="py-20 bg-gradient-to-br from-primary to-primary-dark text-white">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Frequently Asked Questions</h1>
+      <p class="text-xl text-gray-200">
+        Get answers to common questions about Amazon, FedEx, UPS, and other delivery truck accident claims.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="space-y-6">
+        {faqs.map((faq, index) => (
+          <div class="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition">
+            <h2 class="text-lg font-bold text-primary mb-3 flex items-start gap-3">
+              <span class="bg-secondary text-white w-8 h-8 rounded-full flex items-center justify-center text-sm flex-shrink-0">
+                {index + 1}
+              </span>
+              {faq.question}
+            </h2>
+            <p class="text-gray-600 ml-11">{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">Still Have Questions?</h2>
+      <LeadForm source="faq-page" title="Get Personalized Answers" subtitle="Speak with an attorney who can answer your specific questions about your delivery truck accident case." />
+    </div>
+  </section>
+</BaseLayout>

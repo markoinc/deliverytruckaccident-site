@@ -1,0 +1,10 @@
+# Robots.txt for deliverytruckaccident.com
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://deliverytruckaccident.com/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1

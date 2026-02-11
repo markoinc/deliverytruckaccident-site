@@ -1,0 +1,350 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LeadForm from '../components/LeadForm.astro';
+import { states, getOneYearSOLStates, getContributoryNegligenceStates } from '../data/states';
+import { getTopMarkets } from '../data/cities';
+
+const topMarkets = getTopMarkets(10);
+const urgentStates = getOneYearSOLStates();
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Delivery Truck Accident Lawyer",
+  "url": "https://deliverytruckaccident.com",
+  "description": "Find experienced delivery truck accident lawyers nationwide. Free case evaluation for Amazon, FedEx, UPS, and other delivery vehicle injury claims.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://deliverytruckaccident.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+};
+---
+
+<BaseLayout 
+  title="Delivery Truck Accident Lawyers Near You" 
+  description="Injured by a delivery truck? Amazon, FedEx, UPS accident lawyers near you. Free case evaluation. No fees unless you win."
+  schema={schema}
+>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-primary via-primary-light to-primary text-white py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+            Injured by a <span class="text-secondary">Delivery Truck</span>?
+          </h1>
+          <p class="text-xl md:text-2xl text-gray-300 mb-8">
+            Amazon, FedEx, UPS, and other delivery vehicles cause thousands of accidents yearly. Connect with experienced attorneys who fight for maximum compensation.
+          </p>
+          <div class="flex flex-wrap gap-4 mb-8">
+            <div class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
+              <span class="text-2xl">✓</span>
+              <span>Free Case Review</span>
+            </div>
+            <div class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
+              <span class="text-2xl">✓</span>
+              <span>No Win, No Fee</span>
+            </div>
+            <div class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
+              <span class="text-2xl">✓</span>
+              <span>24/7 Availability</span>
+            </div>
+          </div>
+          </div>
+        <div>
+          <LeadForm source="homepage-hero" title="Start Your Free Case Review" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-12 bg-gray-100">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div class="bg-white p-6 rounded-xl shadow">
+          <div class="text-4xl font-bold text-secondary mb-2">159K+</div>
+          <div class="text-gray-600">Delivery Truck Accidents/Year</div>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow">
+          <div class="text-4xl font-bold text-secondary mb-2">$1M+</div>
+          <div class="text-gray-600">Average Serious Injury Settlement</div>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow">
+          <div class="text-4xl font-bold text-secondary mb-2">97%</div>
+          <div class="text-gray-600">Cases Settled Out of Court</div>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow">
+          <div class="text-4xl font-bold text-secondary mb-2">3.1M</div>
+          <div class="text-gray-600">Packages Delivered Daily</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Delivery Companies Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Major Delivery Company Accidents</h2>
+      <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+        The e-commerce boom means more delivery trucks on the road—and more accidents
+      </p>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div class="bg-gray-50 p-6 rounded-xl text-center">
+          <div class="text-5xl mb-4">📦</div>
+          <h3 class="text-xl font-bold mb-2">Amazon</h3>
+          <p class="text-gray-600 text-sm">DSP drivers, Prime vans, and flex drivers cause thousands of accidents yearly</p>
+        </div>
+        <div class="bg-gray-50 p-6 rounded-xl text-center">
+          <div class="text-5xl mb-4">🟣</div>
+          <h3 class="text-xl font-bold mb-2">FedEx</h3>
+          <p class="text-gray-600 text-sm">Ground and Express trucks operate under tight schedules, increasing accident risk</p>
+        </div>
+        <div class="bg-gray-50 p-6 rounded-xl text-center">
+          <div class="text-5xl mb-4">🟤</div>
+          <h3 class="text-xl font-bold mb-2">UPS</h3>
+          <p class="text-gray-600 text-sm">Brown trucks are everywhere—and their drivers face demanding routes</p>
+        </div>
+        <div class="bg-gray-50 p-6 rounded-xl text-center">
+          <div class="text-5xl mb-4">📬</div>
+          <h3 class="text-xl font-bold mb-2">USPS</h3>
+          <p class="text-gray-600 text-sm">Government immunity rules make USPS claims more complex</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h3 class="text-2xl font-bold mb-4">Why Delivery Truck Accidents Are Different</h3>
+          <div class="space-y-4 text-gray-600">
+            <p>
+              <strong>Multiple Liable Parties:</strong> Unlike regular car accidents, delivery truck crashes may involve the driver, the delivery company, vehicle manufacturers, and even third-party contractors.
+            </p>
+            <p>
+              <strong>Commercial Insurance:</strong> Delivery companies carry larger insurance policies ($1M+), meaning higher potential compensation for victims.
+            </p>
+            <p>
+              <strong>Driver Pressure:</strong> Delivery drivers face tight deadlines and quotas, leading to speeding, distracted driving, and fatigue-related accidents.
+            </p>
+            <p>
+              <strong>Electronic Evidence:</strong> GPS tracking, delivery apps, and vehicle cameras can prove negligence—if you act fast before evidence is deleted.
+            </p>
+          </div>
+        </div>
+        <div class="bg-gray-50 p-8 rounded-xl">
+          <h4 class="text-xl font-bold mb-4">Common Delivery Truck Accident Causes</h4>
+          <ul class="space-y-3 text-gray-600">
+            <li class="flex items-start gap-3">
+              <span class="text-secondary font-bold">⚠️</span>
+              <span>Double-parking and illegal stops</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-secondary font-bold">⚠️</span>
+              <span>Backing up without checking mirrors</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-secondary font-bold">⚠️</span>
+              <span>Distracted driving (checking delivery apps)</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-secondary font-bold">⚠️</span>
+              <span>Running red lights to meet quotas</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-secondary font-bold">⚠️</span>
+              <span>Fatigued driving on long routes</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Types of Accidents -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Types of Delivery Truck Accidents We Handle</h2>
+      <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+        Our network of attorneys has experience with all types of delivery vehicle accidents
+      </p>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-xl shadow">
+          <div class="text-4xl mb-4">🚗</div>
+          <h3 class="text-xl font-bold mb-2">Vehicle Collisions</h3>
+          <p class="text-gray-600">Delivery trucks striking other vehicles at intersections, while turning, or while backing up.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow">
+          <div class="text-4xl mb-4">🚶</div>
+          <h3 class="text-xl font-bold mb-2">Pedestrian Accidents</h3>
+          <p class="text-gray-600">Walkers struck by delivery vehicles in residential areas, parking lots, or crosswalks.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow">
+          <div class="text-4xl mb-4">🚴</div>
+          <h3 class="text-xl font-bold mb-2">Cyclist Accidents</h3>
+          <p class="text-gray-600">Bicyclists hit by delivery trucks, often due to blind spots or door opening incidents.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow">
+          <div class="text-4xl mb-4">🏠</div>
+          <h3 class="text-xl font-bold mb-2">Property Damage</h3>
+          <p class="text-gray-600">Delivery trucks damaging mailboxes, fences, vehicles, and homes while making deliveries.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow">
+          <div class="text-4xl mb-4">⚡</div>
+          <h3 class="text-xl font-bold mb-2">Hit and Run</h3>
+          <p class="text-gray-600">Delivery drivers who flee the scene—we help track them down through company records.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow">
+          <div class="text-4xl mb-4">💔</div>
+          <h3 class="text-xl font-bold mb-2">Wrongful Death</h3>
+          <p class="text-gray-600">Fatal accidents involving delivery trucks—we help families seek justice and compensation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Urgent States -->
+  {urgentStates.length > 0 && (
+    <section class="py-16 bg-red-50">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="bg-red-100 border-l-4 border-red-500 p-6 rounded-r-xl mb-8">
+          <h2 class="text-2xl font-bold text-red-800 mb-2">⚠️ Act Fast: 1-Year Statute of Limitations</h2>
+          <p class="text-red-700">
+            If your accident occurred in one of these states, you have only <strong>ONE YEAR</strong> to file a claim. Don't wait!
+          </p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+          {urgentStates.map(state => (
+            <a href={`/states/${state.slug}/`} class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition flex items-center gap-4">
+              <div class="text-4xl">⏰</div>
+              <div>
+                <h3 class="font-bold text-lg">{state.name}</h3>
+                <p class="text-red-600 font-semibold">Only 1 year to file your claim!</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Top Markets -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Find Delivery Truck Accident Lawyers in Major Cities</h2>
+      <p class="text-gray-600 text-center mb-12">Experienced attorneys in your area</p>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+        {topMarkets.map(city => (
+          <a href={`/cities/${city.slug}/`} class="bg-gray-50 p-4 rounded-xl hover:bg-secondary hover:text-white transition group">
+            <h3 class="font-bold">{city.name}</h3>
+            <p class="text-sm text-gray-500 group-hover:text-white/80">{city.stateAbbrev}</p>
+          </a>
+        ))}
+      </div>
+      
+      <div class="mt-8 text-center">
+        <a href="/cities/" class="bg-secondary text-white px-8 py-3 rounded-lg font-semibold hover:bg-secondary-dark transition inline-block">
+          View All Cities →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- States Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Find Lawyers by State</h2>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+        {states.map(state => (
+          <a href={`/states/${state.slug}/`} class="bg-white p-3 rounded-lg shadow hover:shadow-md hover:bg-secondary hover:text-white transition text-center">
+            <span class="font-medium">{state.abbrev}</span>
+          </a>
+        ))}
+      </div>
+      
+      <div class="mt-8 text-center">
+        <a href="/states/" class="text-secondary font-semibold hover:underline">
+          Browse all states with detailed laws →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Delivery Truck Accident FAQs</h2>
+      
+      <div class="space-y-6">
+        <details class="bg-gray-50 p-6 rounded-xl shadow group">
+          <summary class="font-bold text-lg cursor-pointer list-none flex justify-between items-center">
+            Who is liable in a delivery truck accident?
+            <span class="text-secondary group-open:rotate-180 transition">▼</span>
+          </summary>
+          <p class="mt-4 text-gray-600">
+            Liability can fall on multiple parties: the driver, the delivery company (like Amazon, FedEx, or UPS), the vehicle manufacturer, or third-party contractors. Many delivery drivers are technically independent contractors, but companies can still be held liable for negligent hiring, training, or supervision.
+          </p>
+        </details>
+        
+        <details class="bg-gray-50 p-6 rounded-xl shadow group">
+          <summary class="font-bold text-lg cursor-pointer list-none flex justify-between items-center">
+            How much is my delivery truck accident case worth?
+            <span class="text-secondary group-open:rotate-180 transition">▼</span>
+          </summary>
+          <p class="mt-4 text-gray-600">
+            Case values vary widely based on injury severity, medical costs, lost wages, and pain and suffering. Delivery companies typically carry $1M+ in insurance, meaning compensation can be substantial for serious injuries. An experienced attorney can evaluate your specific case.
+          </p>
+        </details>
+        
+        <details class="bg-gray-50 p-6 rounded-xl shadow group">
+          <summary class="font-bold text-lg cursor-pointer list-none flex justify-between items-center">
+            What should I do immediately after a delivery truck accident?
+            <span class="text-secondary group-open:rotate-180 transition">▼</span>
+          </summary>
+          <p class="mt-4 text-gray-600">
+            1) Call 911 and get medical attention. 2) Document the scene—photos of the truck, license plate, company branding, and any damage. 3) Get the driver's information and company name. 4) Report to police. 5) Contact an attorney before speaking with insurance companies.
+          </p>
+        </details>
+        
+        <details class="bg-gray-50 p-6 rounded-xl shadow group">
+          <summary class="font-bold text-lg cursor-pointer list-none flex justify-between items-center">
+            Are Amazon DSP (Delivery Service Partner) accidents handled differently?
+            <span class="text-secondary group-open:rotate-180 transition">▼</span>
+          </summary>
+          <p class="mt-4 text-gray-600">
+            Amazon uses DSPs (independent contractors) for most deliveries, which can complicate liability. However, Amazon may still be held liable for negligent selection of DSPs, setting unrealistic delivery quotas, or maintaining control over delivery operations. An experienced attorney can identify all liable parties.
+          </p>
+        </details>
+        
+        <details class="bg-gray-50 p-6 rounded-xl shadow group">
+          <summary class="font-bold text-lg cursor-pointer list-none flex justify-between items-center">
+            How long do I have to file a delivery truck accident lawsuit?
+            <span class="text-secondary group-open:rotate-180 transition">▼</span>
+          </summary>
+          <p class="mt-4 text-gray-600">
+            The statute of limitations varies by state—typically 2-3 years, but some states like Louisiana and Tennessee only give you 1 year. Evidence like GPS data and delivery logs can be deleted quickly, so it's crucial to act fast.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-16 bg-primary text-white">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">Get Your Free Case Review Today</h2>
+      <p class="text-xl text-gray-300 mb-8">
+        Don't let a delivery truck accident derail your life. Our network of experienced attorneys can help you get the compensation you deserve.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/free-consultation/" class="bg-secondary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-secondary-dark transition">
+          📦 Start Your Free Case Review
+        </a>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
