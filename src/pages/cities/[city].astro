@@ -22,7 +22,7 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "LegalService",
   "name": `${city.name} Delivery Truck Accident Lawyers`,
-  "description": `Find experienced delivery truck accident lawyers in ${city.name}, ${city.stateAbbr}. Free case evaluation.`,
+  "description": `Find experienced delivery truck accident lawyers in ${city.name}, ${city.stateAbbrev}. Free case evaluation.`,
   "areaServed": {
     "@type": "City",
     "name": city.name,
@@ -36,7 +36,7 @@ const schema = {
 
 <BaseLayout 
   title={seoTitle}
-  description={`Find experienced delivery truck accident lawyers in ${city.name}, ${city.stateAbbr}. ${state?.statOfLimitations} statute of limitations. Free case evaluation.`}
+  description={`Find experienced delivery truck accident lawyers in ${city.name}, ${city.stateAbbrev}. ${state?.statOfLimitations} statute of limitations. Free case evaluation.`}
   schema={schema}
 >
   <!-- Hero -->
@@ -49,7 +49,7 @@ const schema = {
         <span class="text-white">{city.name}</span>
       </nav>
       <h1 class="text-4xl md:text-5xl font-bold mb-4">{city.name} Delivery Truck Accident Lawyers</h1>
-      <p class="text-xl text-gray-300">Experienced delivery truck accident attorneys in {city.name}, {city.stateAbbr}</p>
+      <p class="text-xl text-gray-300">Experienced delivery truck accident attorneys in {city.name}, {city.stateAbbrev}</p>
     </div>
   </section>
 
@@ -76,8 +76,8 @@ const schema = {
         <div class="bg-white p-6 rounded-xl shadow mb-8">
           <h2 class="text-2xl font-bold mb-4">Delivery Truck Accidents in {city.name}</h2>
           <p class="text-gray-600 mb-4">
-            {city.name} is {city.deliveryTruckMarketRank ? `ranked #${city.deliveryTruckMarketRank} among US Delivery Truck markets` : "a significant Delivery Truck market"} with 
-            {city.population.toLocaleString()} residents. {city.uniqueFactors?.[0] || "The city sees significant Delivery Truck activity."} 
+            {city.name} is {city.deliveryTrafficRank ? `ranked #${city.deliveryTrafficRank} among US delivery truck traffic markets` : "a significant delivery market"} with 
+            {city.population.toLocaleString()} residents. {city.uniqueFactors?.[0] || "The city sees significant delivery vehicle activity."} 
             If you've been injured in a delivery truck accident in {city.name}, you may be entitled to compensation.
           </p>
 
@@ -86,34 +86,28 @@ const schema = {
               <h3 class="font-semibold text-gray-700">Population</h3>
               <p class="text-2xl font-bold">{city.population.toLocaleString()}</p>
             </div>
-            {city.deliveryTruckMarketRank && (
+            {city.deliveryTrafficRank && (
               <div class="bg-gray-50 p-4 rounded-lg">
-                <h3 class="font-semibold text-gray-700">Delivery Truck Market Rank</h3>
-                <p class="text-2xl font-bold text-secondary">#{city.deliveryTruckMarketRank}</p>
+                <h3 class="font-semibold text-gray-700">Delivery Traffic Rank</h3>
+                <p class="text-2xl font-bold text-secondary">#{city.deliveryTrafficRank}</p>
               </div>
             )}
-            {city.annualDeliveryTruckTrips && (
+            {city.estimatedAnnualDeliveryAccidents && (
               <div class="bg-gray-50 p-4 rounded-lg">
-                <h3 class="font-semibold text-gray-700">Annual Delivery Truck Trips</h3>
-                <p class="text-2xl font-bold">{(city.annualDeliveryTruckTrips / 1000000).toFixed(1)}M</p>
-              </div>
-            )}
-            {city.averageWaitTime && (
-              <div class="bg-gray-50 p-4 rounded-lg">
-                <h3 class="font-semibold text-gray-700">Avg Wait Time</h3>
-                <p class="text-2xl font-bold">{city.averageWaitTime}</p>
+                <h3 class="font-semibold text-gray-700">Est. Annual Delivery Accidents</h3>
+                <p class="text-2xl font-bold">{city.estimatedAnnualDeliveryAccidents.toLocaleString()}</p>
               </div>
             )}
           </div>
         </div>
 
         <!-- Busy Areas -->
-        {city.busyAreas && city.busyAreas.length > 0 && (
+        {city.busyDeliveryAreas && city.busyDeliveryAreas.length > 0 && (
           <div class="bg-white p-6 rounded-xl shadow mb-8">
-            <h2 class="text-2xl font-bold mb-4">High Delivery Truck Activity Areas</h2>
-            <p class="text-gray-600 mb-4">Areas in {city.name} with the highest concentration of Delivery Truck/Delivery Truck activity:</p>
+            <h2 class="text-2xl font-bold mb-4">High Delivery Traffic Areas</h2>
+            <p class="text-gray-600 mb-4">Areas in {city.name} with the highest concentration of delivery vehicle activity:</p>
             <div class="flex flex-wrap gap-2">
-              {city.busyAreas.map(area => (
+              {city.busyDeliveryAreas.map(area => (
                 <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm">{area}</span>
               ))}
             </div>
@@ -136,16 +130,16 @@ const schema = {
           </div>
         )}
 
-        <!-- Airports -->
-        {city.airports && city.airports.length > 0 && (
+        <!-- Fulfillment Centers -->
+        {city.majorFulfillmentCenters && city.majorFulfillmentCenters.length > 0 && (
           <div class="bg-white p-6 rounded-xl shadow mb-8">
-            <h2 class="text-2xl font-bold mb-4">Airport Delivery Truck Zones</h2>
-            <p class="text-gray-600 mb-4">Major airports serving {city.name} with Delivery Truck pickup/dropoff:</p>
+            <h2 class="text-2xl font-bold mb-4">Major Fulfillment & Distribution Centers</h2>
+            <p class="text-gray-600 mb-4">Major delivery operations serving {city.name}:</p>
             <ul class="space-y-2">
-              {city.airports.map(airport => (
+              {city.majorFulfillmentCenters.map(center => (
                 <li class="flex items-center gap-2">
-                  <span>✈️</span>
-                  <span>{airport}</span>
+                  <span>📦</span>
+                  <span>{center}</span>
                 </li>
               ))}
             </ul>
@@ -159,7 +153,7 @@ const schema = {
             <ul class="space-y-3">
               {city.uniqueFactors.map(factor => (
                 <li class="flex items-start gap-3">
-                  <span class="text-secondary text-xl">→</span>
+                  <span class="text-secondary text-xl">🚚</span>
                   <span>{factor}</span>
                 </li>
               ))}
@@ -183,7 +177,7 @@ const schema = {
             </div>
             <div class="mt-4">
               <a href={`/states/${city.stateSlug}/`} class="text-secondary hover:underline font-medium">
-                View all {city.state} Delivery Truck laws →
+                View all {city.state} delivery truck accident laws →
               </a>
             </div>
           </div>
@@ -200,7 +194,8 @@ const schema = {
           />
           
           <div class="mt-8 bg-gray-100 p-6 rounded-xl">
-            <p class="text-gray-600 mt-2">Available 24/7</p>
+            <h3 class="font-bold text-lg mb-2">📞 Available 24/7</h3>
+            <p class="text-gray-600">Get help any time of day or night</p>
           </div>
         </div>
       </div>

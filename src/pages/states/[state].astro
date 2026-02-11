@@ -22,7 +22,7 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "LegalService",
   "name": `${state.name} Delivery Truck Accident Lawyers`,
-  "description": `Find experienced delivery truck accident lawyers in ${state.name}. Free case evaluation for Delivery Truck injury claims.`,
+  "description": `Find experienced delivery truck accident lawyers in ${state.name}. Free case evaluation for delivery truck injury claims.`,
   "areaServed": {
     "@type": "State",
     "name": state.name
@@ -83,45 +83,43 @@ const schema = {
             </div>
             
             <div class="bg-gray-50 p-4 rounded-lg">
-              <h3 class="font-semibold text-gray-700">Min Insurance</h3>
+              <h3 class="font-semibold text-gray-700">Min Auto Insurance</h3>
               <p class="text-lg font-bold">{state.minInsurance}</p>
             </div>
             
             <div class="bg-gray-50 p-4 rounded-lg">
-              <h3 class="font-semibold text-gray-700">TNC Law</h3>
-              <p class="text-lg font-bold">{state.tncLaw ? `Enacted ${state.tncLawYear}` : "No specific law"}</p>
+              <h3 class="font-semibold text-gray-700">Commercial Vehicle Insurance</h3>
+              <p class="text-lg font-bold">{state.commercialVehicleMinInsurance}</p>
             </div>
           </div>
         </div>
 
-        <!-- Delivery Truck Insurance Tiers -->
+        <!-- Delivery Truck Insurance Info -->
         <div class="bg-white p-6 rounded-xl shadow mb-8">
-          <h2 class="text-2xl font-bold mb-6">Delivery Truck Insurance Coverage in {state.name}</h2>
+          <h2 class="text-2xl font-bold mb-6">Delivery Truck Insurance in {state.name}</h2>
           
           <div class="space-y-4">
-            <div class="border-l-4 border-gray-400 pl-4">
-              <h3 class="font-bold">Period 1: App On, Waiting for Request</h3>
-              <p class="text-gray-600">{state.deliveryTruckInsuranceTiers.waitingForRide}</p>
-            </div>
-            
             <div class="border-l-4 border-secondary pl-4">
-              <h3 class="font-bold">Period 2: En Route to Pickup</h3>
-              <p class="text-gray-600">{state.deliveryTruckInsuranceTiers.enRoute}</p>
+              <h3 class="font-bold">Commercial Delivery Vehicles</h3>
+              <p class="text-gray-600">Amazon, FedEx, UPS, and other major delivery companies typically carry $1 million or more in liability coverage. This commercial insurance protects accident victims.</p>
             </div>
             
-            <div class="border-l-4 border-accent-green pl-4">
-              <h3 class="font-bold">Period 3: Passenger in Vehicle</h3>
-              <p class="text-gray-600">{state.deliveryTruckInsuranceTiers.enRoute}</p>
+            <div class="border-l-4 border-accent-tan pl-4">
+              <h3 class="font-bold">Gig Delivery Drivers</h3>
+              <p class="text-gray-600">DoorDash, Instacart, and similar services may have insurance gaps. Coverage depends on whether the driver was actively making a delivery at the time of the accident.</p>
+            </div>
+            
+            <div class="border-l-4 border-primary pl-4">
+              <h3 class="font-bold">USPS Accidents</h3>
+              <p class="text-gray-600">Claims against the US Postal Service require filing under the Federal Tort Claims Act with special procedures and deadlines.</p>
             </div>
           </div>
         </div>
 
         <!-- Unique Laws -->
         <div class="bg-white p-6 rounded-xl shadow mb-8">
-          <h2 class="text-2xl font-bold mb-4">{state.name} Delivery Truck Regulations</h2>
-          <p class="text-gray-600 mb-4">{state.deliveryTruckRegulations}</p>
+          <h2 class="text-2xl font-bold mb-4">{state.name} Key Legal Points</h2>
           
-          <h3 class="font-bold mb-2">Key Points:</h3>
           <ul class="list-disc list-inside space-y-2 text-gray-600">
             {state.uniqueLaws.map(law => (
               <li>{law}</li>
@@ -129,24 +127,39 @@ const schema = {
           </ul>
         </div>
 
-        <!-- Unique Facts -->
+        <!-- Key Facts -->
         <div class="bg-gray-50 p-6 rounded-xl mb-8">
           <h2 class="text-2xl font-bold mb-4">What You Should Know</h2>
           <ul class="space-y-3">
-            {state.uniqueFacts.map(fact => (
+            {state.keyFacts.map(fact => (
               <li class="flex items-start gap-3">
-                <span class="text-secondary text-xl">→</span>
+                <span class="text-secondary text-xl">📦</span>
                 <span>{fact}</span>
               </li>
             ))}
           </ul>
         </div>
 
+        <!-- Delivery Hubs -->
+        {state.deliveryHubs.length > 0 && (
+          <div class="bg-white p-6 rounded-xl shadow mb-8">
+            <h2 class="text-2xl font-bold mb-4">Major Delivery Operations in {state.name}</h2>
+            <ul class="space-y-2">
+              {state.deliveryHubs.map(hub => (
+                <li class="flex items-start gap-3">
+                  <span class="text-secondary">🚚</span>
+                  <span>{hub}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         <!-- Major Markets -->
         <div class="bg-white p-6 rounded-xl shadow mb-8">
-          <h2 class="text-2xl font-bold mb-4">Major Delivery Truck Markets in {state.name}</h2>
+          <h2 class="text-2xl font-bold mb-4">Major Delivery Markets in {state.name}</h2>
           <div class="flex flex-wrap gap-3">
-            {state.majorDeliveryTruckMarkets.map(market => {
+            {state.majorDeliveryMarkets.map(market => {
               const cityData = cities.find(c => c.name === market);
               return cityData ? (
                 <a href={`/cities/${cityData.slug}/`} class="bg-secondary text-white px-4 py-2 rounded-lg hover:bg-secondary-dark transition">
@@ -180,16 +193,17 @@ const schema = {
           <LeadForm 
             source={`state-${state.slug}`} 
             title={`Free ${state.name} Case Review`}
-            subtitle={`Speak with an attorney who knows ${state.name}'s Delivery Truck laws.`}
+            subtitle={`Speak with an attorney who knows ${state.name}'s delivery truck accident laws.`}
           />
           
           <div class="mt-8 bg-gray-100 p-6 rounded-xl">
-            <p class="text-gray-600 mt-2">Available 24/7</p>
+            <h3 class="font-bold text-lg mb-2">📞 Available 24/7</h3>
+            <p class="text-gray-600">Get help any time of day or night</p>
           </div>
           
           <div class="mt-8 bg-primary text-white p-6 rounded-xl">
-            <h3 class="font-bold text-lg mb-2">Annual Delivery Truck Accidents</h3>
-            <p class="text-4xl font-bold text-secondary">{state.annualDeliveryTruckAccidents.toLocaleString()}</p>
+            <h3 class="font-bold text-lg mb-2">Annual Delivery Accidents</h3>
+            <p class="text-4xl font-bold text-secondary">{state.annualDeliveryAccidents.toLocaleString()}</p>
             <p class="text-gray-400 text-sm mt-2">Estimated in {state.name}</p>
           </div>
         </div>

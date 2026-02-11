@@ -1,1044 +1,732 @@
 export interface State {
   name: string;
-  abbr: string;
+  abbrev: string;
   slug: string;
   statOfLimitations: string;
   faultSystem: string;
   minInsurance: string;
-  deliveryTruckRegulations: string;
-  commercialVehicleLaw: boolean;
-  commercialVehicleLawYear?: number;
-  deliveryTruckInsuranceTiers: {
-    offDuty: string;
-    loadingZone: string;
-    activeDelivery: string;
-  };
+  commercialVehicleMinInsurance: string;
   uniqueLaws: string[];
-  majorDeliveryTruckMarkets: string[];
-  annualDeliveryTruckAccidents: number;
-  uniqueFacts: string[];
+  majorDeliveryMarkets: string[];
+  annualDeliveryAccidents: number;
+  deliveryHubs: string[];
+  keyFacts: string[];
 }
 
 export const states: State[] = [
   {
     name: "Alabama",
-    abbr: "AL",
+    abbrev: "AL",
     slug: "alabama",
     statOfLimitations: "2 years",
     faultSystem: "Contributory negligence",
     minInsurance: "25/50/25",
-    deliveryTruckRegulations: "State-regulated since 2018",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2018,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["Contributory negligence can bar recovery if victim is 1% at fault", "Commercial Vehicle drivers must pass background checks", "Airport pickup regulations vary by city"],
-    majorDeliveryTruckMarkets: ["Birmingham", "Montgomery", "Huntsville", "Mobile"],
-    annualDeliveryTruckAccidents: 450,
-    uniqueFacts: ["One of few contributory negligence states - critical for Delivery Truck claims", "Delivery Truck launched in Alabama in 2014"]
+    commercialVehicleMinInsurance: "$750,000 for vehicles over 10,001 lbs",
+    uniqueLaws: ["Contributory negligence can bar recovery if victim is even 1% at fault", "Must file within 2 years of accident", "Commercial vehicle regulations follow federal FMCSA guidelines"],
+    majorDeliveryMarkets: ["Birmingham", "Montgomery", "Huntsville", "Mobile"],
+    annualDeliveryAccidents: 1450,
+    deliveryHubs: ["Amazon fulfillment in Bessemer", "FedEx Ground in Birmingham", "UPS hub in Montgomery"],
+    keyFacts: ["One of 4 contributory negligence states - makes claims difficult", "Growing e-commerce presence in Birmingham metro"]
   },
   {
     name: "Alaska",
-    abbr: "AK",
+    abbrev: "AK",
     slug: "alaska",
     statOfLimitations: "2 years",
     faultSystem: "Pure comparative negligence",
     minInsurance: "50/100/25",
-    deliveryTruckRegulations: "State-regulated since 2017",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2017,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["Higher minimum insurance requirements than most states", "Cold weather creates unique Delivery Truck hazards", "Limited Delivery Truck availability outside Anchorage"],
-    majorDeliveryTruckMarkets: ["Anchorage", "Fairbanks"],
-    annualDeliveryTruckAccidents: 85,
-    uniqueFacts: ["Extreme weather conditions affect Delivery Truck safety year-round", "Higher insurance minimums provide better protection"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Higher minimum insurance requirements than most states", "Extreme weather creates unique delivery hazards", "Remote areas limit delivery service availability"],
+    majorDeliveryMarkets: ["Anchorage", "Fairbanks"],
+    annualDeliveryAccidents: 285,
+    deliveryHubs: ["USPS is primary carrier for rural areas", "Limited Amazon coverage outside Anchorage"],
+    keyFacts: ["Pure comparative negligence allows partial recovery even if partially at fault", "Winter conditions cause significant delivery delays and accidents"]
   },
   {
     name: "Arizona",
-    abbr: "AZ",
+    abbrev: "AZ",
     slug: "arizona",
     statOfLimitations: "2 years",
     faultSystem: "Pure comparative negligence",
     minInsurance: "25/50/15",
-    deliveryTruckRegulations: "State-regulated since 2015",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2015,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["Early adopter of Delivery Truck regulations", "Self-driving vehicle testing hub", "Phoenix is major Delivery Truck testing ground"],
-    majorDeliveryTruckMarkets: ["Phoenix", "Tucson", "Scottsdale", "Mesa", "Tempe", "Chandler"],
-    annualDeliveryTruckAccidents: 2800,
-    uniqueFacts: ["Home to Delivery Truck's self-driving car testing program", "First fatal autonomous delivery truck accident occurred in Tempe (2018)", "Year-round warm weather means consistent Delivery Truck demand"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Pure comparative fault allows recovery regardless of your percentage of fault", "Strong consumer protection laws for accident victims"],
+    majorDeliveryMarkets: ["Phoenix", "Tucson", "Scottsdale", "Mesa", "Tempe", "Chandler"],
+    annualDeliveryAccidents: 4800,
+    deliveryHubs: ["Amazon PHX5 mega-fulfillment center", "FedEx regional hub in Phoenix", "Multiple UPS distribution centers"],
+    keyFacts: ["Phoenix is one of Amazon's largest fulfillment markets", "Year-round warm weather means consistent delivery operations", "High population growth = high delivery truck traffic"]
   },
   {
     name: "Arkansas",
-    abbr: "AR",
+    abbrev: "AR",
     slug: "arkansas",
     statOfLimitations: "3 years",
     faultSystem: "Modified comparative (50%)",
     minInsurance: "25/50/25",
-    deliveryTruckRegulations: "State-regulated since 2015",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2015,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["3-year statute of limitations gives more time to file", "Cannot recover if more than 50% at fault"],
-    majorDeliveryTruckMarkets: ["Little Rock", "Fayetteville", "Fort Smith"],
-    annualDeliveryTruckAccidents: 380,
-    uniqueFacts: ["Longer statute of limitations than neighboring states", "Growing Delivery Truck presence in university towns"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["3-year statute of limitations gives more time to file than most states", "Cannot recover if more than 50% at fault"],
+    majorDeliveryMarkets: ["Little Rock", "Fayetteville", "Fort Smith", "Bentonville"],
+    annualDeliveryAccidents: 980,
+    deliveryHubs: ["Walmart headquarters in Bentonville drives massive logistics", "J.B. Hunt headquarters in Lowell"],
+    keyFacts: ["Walmart's supply chain hub creates intense delivery traffic", "3-year statute of limitations is favorable for victims"]
   },
   {
     name: "California",
-    abbr: "CA",
+    abbrev: "CA",
     slug: "california",
     statOfLimitations: "2 years",
     faultSystem: "Pure comparative negligence",
     minInsurance: "15/30/5",
-    deliveryTruckRegulations: "First state to regulate Commercial Vehicles (2013)",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2013,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["AB5 law affects driver classification", "CPUC regulates Delivery Truck companies", "Prop 22 allows drivers to remain contractors", "Strictest background check requirements"],
-    majorDeliveryTruckMarkets: ["Los Angeles", "San Francisco", "San Diego", "San Jose", "Oakland", "Sacramento", "Long Beach"],
-    annualDeliveryTruckAccidents: 15000,
-    uniqueFacts: ["Delivery Truck was founded in San Francisco (2009)", "Highest Delivery Truck usage in the nation", "AB5 and Prop 22 created landmark gig worker laws", "First state to establish Commercial Vehicle regulatory framework"]
+    commercialVehicleMinInsurance: "$750,000+ for commercial delivery vehicles",
+    uniqueLaws: ["AB5 affects gig delivery driver classification", "Strong employee protection laws", "Prop 22 allows gig companies to classify drivers as contractors"],
+    majorDeliveryMarkets: ["Los Angeles", "San Francisco", "San Diego", "San Jose", "Oakland", "Sacramento", "Long Beach"],
+    annualDeliveryAccidents: 18500,
+    deliveryHubs: ["Massive Amazon presence across state", "Port of LA/Long Beach - largest US port", "Major FedEx and UPS hubs throughout"],
+    keyFacts: ["Highest delivery truck accident volume in nation", "Port traffic creates heavy commercial vehicle presence", "Dense urban areas have frequent delivery vehicle incidents"]
   },
   {
     name: "Colorado",
-    abbr: "CO",
+    abbrev: "CO",
     slug: "colorado",
     statOfLimitations: "3 years",
     faultSystem: "Modified comparative (50%)",
     minInsurance: "25/50/15",
-    deliveryTruckRegulations: "State-regulated since 2014",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2014,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["SB 125 established Commercial Vehicle regulations", "Denver International Airport has specific Delivery Truck zones", "Mountain resort areas have special regulations"],
-    majorDeliveryTruckMarkets: ["Denver", "Colorado Springs", "Aurora", "Boulder", "Fort Collins"],
-    annualDeliveryTruckAccidents: 3200,
-    uniqueFacts: ["Second state to pass comprehensive Commercial Vehicle legislation", "High Delivery Truck demand for ski resort transportation", "Denver is one of Delivery Truck's top 10 markets"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["3-year statute provides extra time to file", "Cannot recover if more than 50% at fault", "Mountain passes create unique commercial vehicle regulations"],
+    majorDeliveryMarkets: ["Denver", "Colorado Springs", "Aurora", "Boulder", "Fort Collins"],
+    annualDeliveryAccidents: 3800,
+    deliveryHubs: ["Amazon DEN fulfillment centers", "FedEx Ground hub in Denver", "UPS regional hub"],
+    keyFacts: ["Rapidly growing population increases delivery demand", "Mountain terrain creates delivery truck hazards", "Denver is major e-commerce fulfillment hub"]
   },
   {
     name: "Connecticut",
-    abbr: "CT",
+    abbrev: "CT",
     slug: "connecticut",
     statOfLimitations: "2 years",
     faultSystem: "Modified comparative (51%)",
     minInsurance: "25/50/25",
-    deliveryTruckRegulations: "State-regulated since 2017",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2017,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["Late adopter of Delivery Truck regulations", "High insurance requirements", "Bradley Airport has designated pickup zones"],
-    majorDeliveryTruckMarkets: ["Hartford", "New Haven", "Stamford", "Bridgeport"],
-    annualDeliveryTruckAccidents: 950,
-    uniqueFacts: ["High commuter Delivery Truck usage to NYC", "Strong consumer protection laws benefit accident victims"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Cannot recover if 51% or more at fault", "High insurance requirements protect victims"],
+    majorDeliveryMarkets: ["Hartford", "New Haven", "Stamford", "Bridgeport"],
+    annualDeliveryAccidents: 1850,
+    deliveryHubs: ["Strategic location between NYC and Boston", "Amazon fulfillment in Windsor"],
+    keyFacts: ["Dense suburban areas have high delivery traffic", "High property values mean significant property damage claims"]
   },
   {
     name: "Delaware",
-    abbr: "DE",
+    abbrev: "DE",
     slug: "delaware",
     statOfLimitations: "2 years",
     faultSystem: "Modified comparative (51%)",
     minInsurance: "25/50/10",
-    deliveryTruckRegulations: "State-regulated since 2016",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2016,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["Small state with concentrated Delivery Truck activity", "Philadelphia Airport serves many Delaware delivery recipients"],
-    majorDeliveryTruckMarkets: ["Wilmington", "Newark", "Dover"],
-    annualDeliveryTruckAccidents: 280,
-    uniqueFacts: ["Many residents use Delivery Truck to reach Philadelphia and Baltimore airports", "Corporate headquarters concentration drives business Delivery Truck demand"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Cannot recover if 51% or more at fault", "Corporate-friendly laws affect business liability"],
+    majorDeliveryMarkets: ["Wilmington", "Newark", "Dover"],
+    annualDeliveryAccidents: 580,
+    deliveryHubs: ["Amazon fulfillment in New Castle", "Close proximity to Philadelphia logistics hub"],
+    keyFacts: ["Small state with concentrated delivery activity", "Many major corporations headquartered here"]
   },
   {
     name: "District of Columbia",
-    abbr: "DC",
+    abbrev: "DC",
     slug: "washington-dc",
     statOfLimitations: "3 years",
     faultSystem: "Contributory negligence",
     minInsurance: "25/50/10",
-    deliveryTruckRegulations: "First jurisdiction to legalize Delivery Truck (2014)",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2014,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["Contributory negligence makes claims difficult", "First to officially legalize Delivery Truck/Delivery Truck", "Strict driver requirements"],
-    majorDeliveryTruckMarkets: ["Washington DC"],
-    annualDeliveryTruckAccidents: 2400,
-    uniqueFacts: ["One of highest Delivery Truck usage rates per capita", "Contributory negligence is a major hurdle for claims", "Government workers and tourists drive huge demand"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Contributory negligence makes claims extremely difficult", "Dense urban environment with delivery restrictions", "Federal property adds complexity to some accidents"],
+    majorDeliveryMarkets: ["Washington DC"],
+    annualDeliveryAccidents: 2100,
+    deliveryHubs: ["High government office delivery demand", "Dense residential delivery routes"],
+    keyFacts: ["Contributory negligence state - claims very difficult if any fault", "Dense urban area with high delivery vehicle congestion", "Double-parking common and causes many accidents"]
   },
   {
     name: "Florida",
-    abbr: "FL",
+    abbrev: "FL",
     slug: "florida",
     statOfLimitations: "4 years",
     faultSystem: "Modified comparative (51%)",
     minInsurance: "10/20/10",
-    deliveryTruckRegulations: "State-regulated since 2017",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2017,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["4-year statute of limitations (longest)", "No-fault PIP insurance required", "Theme park areas have high Delivery Truck density"],
-    majorDeliveryTruckMarkets: ["Miami", "Orlando", "Tampa", "Jacksonville", "Fort Lauderdale", "West Palm Beach"],
-    annualDeliveryTruckAccidents: 12000,
-    uniqueFacts: ["Second highest Delivery Truck usage after California", "Tourism drives massive Delivery Truck demand", "4-year statute of limitations is most favorable for victims", "No-fault insurance adds complexity to claims"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["4-year statute of limitations - one of longest in US", "No-fault PIP insurance required", "Cannot recover if 51% or more at fault"],
+    majorDeliveryMarkets: ["Miami", "Orlando", "Tampa", "Jacksonville", "Fort Lauderdale", "West Palm Beach"],
+    annualDeliveryAccidents: 14500,
+    deliveryHubs: ["Massive Amazon presence in Tampa, Jacksonville, and Miami", "Port of Miami creates heavy logistics traffic", "FedEx hub in Orlando"],
+    keyFacts: ["4-year statute of limitations is very favorable for victims", "Year-round warm weather means consistent delivery operations", "Tourism creates high seasonal delivery demand"]
   },
   {
     name: "Georgia",
-    abbr: "GA",
+    abbrev: "GA",
     slug: "georgia",
     statOfLimitations: "2 years",
     faultSystem: "Modified comparative (50%)",
     minInsurance: "25/50/25",
-    deliveryTruckRegulations: "State-regulated since 2015",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2015,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["HB 190 established Commercial Vehicle framework", "Atlanta airport is one of busiest for Delivery Truck", "Delivery Truck insurance gaps addressed by law"],
-    majorDeliveryTruckMarkets: ["Atlanta", "Savannah", "Augusta", "Athens"],
-    annualDeliveryTruckAccidents: 5500,
-    uniqueFacts: ["Atlanta Hartsfield-Jackson is world's busiest airport - massive Delivery Truck demand", "Early adopter of comprehensive Delivery Truck laws"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Cannot recover if 50% or more at fault", "Punitive damages allowed for gross negligence"],
+    majorDeliveryMarkets: ["Atlanta", "Savannah", "Augusta", "Athens"],
+    annualDeliveryAccidents: 6800,
+    deliveryHubs: ["Atlanta is major UPS hub (headquarters)", "Amazon mega-fulfillment centers in metro Atlanta", "Port of Savannah drives logistics"],
+    keyFacts: ["Atlanta is UPS worldwide headquarters", "Major Southeast logistics hub creates heavy delivery traffic", "Port of Savannah is one of busiest US ports"]
   },
   {
     name: "Hawaii",
-    abbr: "HI",
+    abbrev: "HI",
     slug: "hawaii",
     statOfLimitations: "2 years",
     faultSystem: "Modified comparative (51%)",
     minInsurance: "20/40/10",
-    deliveryTruckRegulations: "State-regulated since 2016",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2016,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["No-fault PIP insurance required", "Island geography limits service areas", "Tourism-heavy demand patterns"],
-    majorDeliveryTruckMarkets: ["Honolulu", "Maui", "Kona"],
-    annualDeliveryTruckAccidents: 650,
-    uniqueFacts: ["Tourism drives nearly all Delivery Truck demand", "Island geography creates unique accident patterns", "High cost of living means high Delivery Truck fares"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Island geography limits service areas", "No-fault PIP insurance required", "Unique shipping requirements affect delivery"],
+    majorDeliveryMarkets: ["Honolulu", "Maui", "Kona"],
+    annualDeliveryAccidents: 750,
+    deliveryHubs: ["Most deliveries arrive by ship/air", "Limited ground delivery infrastructure"],
+    keyFacts: ["Island geography creates unique delivery challenges", "High shipping costs affect delivery economics", "Tourism drives significant package volume"]
   },
   {
     name: "Idaho",
-    abbr: "ID",
+    abbrev: "ID",
     slug: "idaho",
     statOfLimitations: "2 years",
     faultSystem: "Modified comparative (50%)",
     minInsurance: "25/50/15",
-    deliveryTruckRegulations: "State-regulated since 2015",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2015,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["HB 195 established Delivery Truck framework", "Rural areas have limited coverage"],
-    majorDeliveryTruckMarkets: ["Boise", "Idaho Falls", "Meridian"],
-    annualDeliveryTruckAccidents: 320,
-    uniqueFacts: ["Rapidly growing Boise market", "Limited Delivery Truck availability in rural areas"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Cannot recover if 50% or more at fault", "Rural areas have limited delivery coverage"],
+    majorDeliveryMarkets: ["Boise", "Idaho Falls", "Meridian"],
+    annualDeliveryAccidents: 720,
+    deliveryHubs: ["Growing Boise market attracts fulfillment investment", "USPS primary carrier for rural areas"],
+    keyFacts: ["Rapidly growing population increases delivery demand", "Rural areas have limited delivery service"]
   },
   {
     name: "Illinois",
-    abbr: "IL",
+    abbrev: "IL",
     slug: "illinois",
     statOfLimitations: "2 years",
     faultSystem: "Modified comparative (51%)",
     minInsurance: "25/50/20",
-    deliveryTruckRegulations: "State-regulated since 2015",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2015,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["City of Chicago has additional regulations", "O'Hare and Midway have designated pickup zones", "Strong consumer protection laws"],
-    majorDeliveryTruckMarkets: ["Chicago", "Springfield", "Peoria", "Rockford", "Champaign"],
-    annualDeliveryTruckAccidents: 8500,
-    uniqueFacts: ["Chicago is one of Delivery Truck's largest markets globally", "O'Hare Airport is major Delivery Truck hub", "City and state regulations sometimes conflict"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Cannot recover if 51% or more at fault", "Chicago has additional delivery regulations", "Strong consumer protection laws"],
+    majorDeliveryMarkets: ["Chicago", "Springfield", "Peoria", "Rockford", "Champaign"],
+    annualDeliveryAccidents: 9800,
+    deliveryHubs: ["Chicago is major national logistics hub", "O'Hare cargo airport hub", "Multiple Amazon fulfillment centers"],
+    keyFacts: ["Chicago is central US logistics hub - massive delivery traffic", "Dense urban areas have frequent delivery vehicle incidents", "Major rail and trucking crossroads"]
   },
   {
     name: "Indiana",
-    abbr: "IN",
+    abbrev: "IN",
     slug: "indiana",
     statOfLimitations: "2 years",
     faultSystem: "Modified comparative (51%)",
     minInsurance: "25/50/25",
-    deliveryTruckRegulations: "State-regulated since 2015",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2015,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["SEA 117 established Commercial Vehicle rules", "Indianapolis Motor Speedway events create surge demand"],
-    majorDeliveryTruckMarkets: ["Indianapolis", "Fort Wayne", "Evansville", "South Bend"],
-    annualDeliveryTruckAccidents: 1800,
-    uniqueFacts: ["Indy 500 creates massive annual Delivery Truck demand", "Major college towns have high student Delivery Truck usage"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Cannot recover if 51% or more at fault", "Strong pro-business environment"],
+    majorDeliveryMarkets: ["Indianapolis", "Fort Wayne", "Evansville", "South Bend"],
+    annualDeliveryAccidents: 2800,
+    deliveryHubs: ["FedEx Ground hub in Indianapolis", "Indianapolis airport is FedEx hub", "Central location attracts distribution centers"],
+    keyFacts: ["Central US location makes it distribution hub", "Indy 500 creates surge delivery demand", "Major college towns have high student delivery volume"]
   },
   {
     name: "Iowa",
-    abbr: "IA",
+    abbrev: "IA",
     slug: "iowa",
     statOfLimitations: "2 years",
     faultSystem: "Modified comparative (51%)",
     minInsurance: "20/40/15",
-    deliveryTruckRegulations: "State-regulated since 2016",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2016,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["Rural coverage remains limited", "University towns have concentrated service"],
-    majorDeliveryTruckMarkets: ["Des Moines", "Cedar Rapids", "Iowa City"],
-    annualDeliveryTruckAccidents: 420,
-    uniqueFacts: ["University of Iowa campus drives Delivery Truck demand", "Weather creates seasonal usage patterns"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Cannot recover if 51% or more at fault", "Rural coverage limitations"],
+    majorDeliveryMarkets: ["Des Moines", "Cedar Rapids", "Iowa City"],
+    annualDeliveryAccidents: 920,
+    deliveryHubs: ["Growing e-commerce presence in Des Moines", "University towns have higher delivery demand"],
+    keyFacts: ["Agricultural state with significant rural delivery challenges", "Weather creates seasonal delivery issues"]
   },
   {
     name: "Kansas",
-    abbr: "KS",
+    abbrev: "KS",
     slug: "kansas",
     statOfLimitations: "2 years",
     faultSystem: "Modified comparative (50%)",
     minInsurance: "25/50/25",
-    deliveryTruckRegulations: "State-regulated since 2015",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2015,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["SB 117 established Commercial Vehicle framework", "Kansas City metro spans state line"],
-    majorDeliveryTruckMarkets: ["Kansas City (KS)", "Wichita", "Overland Park", "Lawrence"],
-    annualDeliveryTruckAccidents: 580,
-    uniqueFacts: ["Kansas City metro area shared with Missouri creates jurisdictional complexities", "University town demand in Lawrence"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Cannot recover if 50% or more at fault", "Kansas City metro spans state line - jurisdiction issues"],
+    majorDeliveryMarkets: ["Kansas City (KS)", "Wichita", "Overland Park", "Lawrence"],
+    annualDeliveryAccidents: 1080,
+    deliveryHubs: ["Kansas City metro logistics hub", "Amazon in Kansas City area"],
+    keyFacts: ["Kansas City metro shared with Missouri creates jurisdiction complexity", "Central US location attracts distribution operations"]
   },
   {
     name: "Kentucky",
-    abbr: "KY",
+    abbrev: "KY",
     slug: "kentucky",
     statOfLimitations: "2 years",
     faultSystem: "Pure comparative negligence",
     minInsurance: "25/50/25",
-    deliveryTruckRegulations: "State-regulated since 2015",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2015,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["HB 86 established Commercial Vehicle rules", "Kentucky Derby creates massive annual surge", "No-fault PIP insurance required"],
-    majorDeliveryTruckMarkets: ["Louisville", "Lexington", "Bowling Green"],
-    annualDeliveryTruckAccidents: 980,
-    uniqueFacts: ["Kentucky Derby is one of biggest Delivery Truck events annually", "Louisville airport sees significant Delivery Truck traffic", "Pure comparative negligence is favorable for victims"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Pure comparative negligence allows recovery regardless of fault percentage", "No-fault PIP insurance required"],
+    majorDeliveryMarkets: ["Louisville", "Lexington", "Bowling Green"],
+    annualDeliveryAccidents: 2180,
+    deliveryHubs: ["UPS Worldport in Louisville - largest package sorting hub in world", "Amazon Air hub at CVG airport"],
+    keyFacts: ["Louisville has UPS's global hub - massive delivery traffic", "Pure comparative negligence is favorable for victims", "Amazon Air hub at Cincinnati/NKY airport"]
   },
   {
     name: "Louisiana",
-    abbr: "LA",
+    abbrev: "LA",
     slug: "louisiana",
     statOfLimitations: "1 year",
     faultSystem: "Pure comparative negligence",
     minInsurance: "15/30/25",
-    deliveryTruckRegulations: "State-regulated since 2015",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2015,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["ONLY 1 YEAR statute of limitations - shortest in US", "Mardi Gras creates extreme surge demand", "French Quarter has special regulations"],
-    majorDeliveryTruckMarkets: ["New Orleans", "Baton Rouge", "Shreveport"],
-    annualDeliveryTruckAccidents: 2100,
-    uniqueFacts: ["1-YEAR STATUTE OF LIMITATIONS - Act immediately!", "Mardi Gras is one of biggest Delivery Truck events in US", "New Orleans has extremely high Delivery Truck usage per capita", "Tourism and nightlife drive 24/7 demand"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["ONLY 1 YEAR statute of limitations - ACT IMMEDIATELY", "Pure comparative negligence allows partial recovery"],
+    majorDeliveryMarkets: ["New Orleans", "Baton Rouge", "Shreveport"],
+    annualDeliveryAccidents: 3100,
+    deliveryHubs: ["Port of New Orleans drives logistics", "Growing Amazon presence"],
+    keyFacts: ["1-YEAR DEADLINE - shortest in US - you must act fast!", "Tourism creates high delivery demand in New Orleans", "Pure comparative fault is favorable but deadline is critical"]
   },
   {
     name: "Maine",
-    abbr: "ME",
+    abbrev: "ME",
     slug: "maine",
     statOfLimitations: "6 years",
     faultSystem: "Modified comparative (50%)",
     minInsurance: "50/100/25",
-    deliveryTruckRegulations: "State-regulated since 2015",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2015,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["6-year statute of limitations - longest in US", "Higher insurance minimums", "Limited service in rural areas"],
-    majorDeliveryTruckMarkets: ["Portland", "Bangor", "Lewiston"],
-    annualDeliveryTruckAccidents: 180,
-    uniqueFacts: ["6-year statute of limitations is most favorable in nation", "Tourism season creates summer surge demand", "Higher insurance minimums provide better coverage"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["6-year statute of limitations - LONGEST in US", "Higher insurance minimums provide better protection", "Cannot recover if 50% or more at fault"],
+    majorDeliveryMarkets: ["Portland", "Bangor", "Lewiston"],
+    annualDeliveryAccidents: 480,
+    deliveryHubs: ["Limited fulfillment infrastructure", "USPS primary for rural areas"],
+    keyFacts: ["6-year statute of limitations is most favorable in nation", "Rural areas have limited delivery options", "Higher insurance minimums protect victims better"]
   },
   {
     name: "Maryland",
-    abbr: "MD",
+    abbrev: "MD",
     slug: "maryland",
     statOfLimitations: "3 years",
     faultSystem: "Contributory negligence",
     minInsurance: "30/60/15",
-    deliveryTruckRegulations: "State-regulated since 2015",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2015,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["Contributory negligence - extremely difficult to recover", "BWI Airport has designated Delivery Truck zones", "DC metro area spans jurisdiction"],
-    majorDeliveryTruckMarkets: ["Baltimore", "Bethesda", "Silver Spring", "Columbia"],
-    annualDeliveryTruckAccidents: 2800,
-    uniqueFacts: ["Contributory negligence makes claims very difficult", "High DC commuter Delivery Truck usage", "Baltimore and DC metro create overlapping service areas"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Contributory negligence makes recovery extremely difficult", "Any fault can bar your claim entirely", "DC metro area creates jurisdiction issues"],
+    majorDeliveryMarkets: ["Baltimore", "Bethesda", "Silver Spring", "Columbia"],
+    annualDeliveryAccidents: 4200,
+    deliveryHubs: ["Baltimore port drives logistics", "DC metro area creates high delivery demand", "Amazon BWI fulfillment center"],
+    keyFacts: ["Contributory negligence state - claims very difficult", "Dense DC suburbs have heavy delivery traffic", "Baltimore port creates significant commercial vehicle presence"]
   },
   {
     name: "Massachusetts",
-    abbr: "MA",
+    abbrev: "MA",
     slug: "massachusetts",
     statOfLimitations: "3 years",
     faultSystem: "Modified comparative (51%)",
     minInsurance: "20/40/5",
-    deliveryTruckRegulations: "State-regulated since 2016",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2016,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["HB 4049 established comprehensive regulations", "Boston has additional city requirements", "Logan Airport has specific pickup procedures"],
-    majorDeliveryTruckMarkets: ["Boston", "Cambridge", "Worcester", "Springfield"],
-    annualDeliveryTruckAccidents: 4200,
-    uniqueFacts: ["Boston is one of oldest and most established Delivery Truck markets", "High college student population drives demand", "No-fault PIP insurance adds complexity"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Cannot recover if 51% or more at fault", "Strong consumer protection laws", "No-fault PIP insurance"],
+    majorDeliveryMarkets: ["Boston", "Cambridge", "Worcester", "Springfield"],
+    annualDeliveryAccidents: 5200,
+    deliveryHubs: ["Boston is major Northeast logistics hub", "Amazon fulfillment in Fall River and surrounding areas", "Logan Airport cargo operations"],
+    keyFacts: ["Dense urban areas create delivery challenges and accidents", "High college student population drives delivery demand", "Historic city layout causes delivery truck navigation issues"]
   },
   {
     name: "Michigan",
-    abbr: "MI",
+    abbrev: "MI",
     slug: "michigan",
     statOfLimitations: "3 years",
     faultSystem: "Modified comparative (51%)",
     minInsurance: "50/100/10",
-    deliveryTruckRegulations: "State-regulated since 2016",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2016,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["No-fault insurance state with unique rules", "Detroit is major Delivery Truck market", "Higher insurance minimums"],
-    majorDeliveryTruckMarkets: ["Detroit", "Grand Rapids", "Ann Arbor", "Lansing"],
-    annualDeliveryTruckAccidents: 3400,
-    uniqueFacts: ["No-fault insurance creates unique claim procedures", "Detroit's auto industry connection to Delivery Truck partnerships", "University of Michigan drives Ann Arbor demand"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["No-fault insurance state with unique rules", "Higher insurance minimums than most states", "Cannot recover if 51% or more at fault"],
+    majorDeliveryMarkets: ["Detroit", "Grand Rapids", "Ann Arbor", "Lansing"],
+    annualDeliveryAccidents: 4800,
+    deliveryHubs: ["Detroit area has major distribution centers", "Amazon expanding in Michigan", "Auto industry drives B2B delivery"],
+    keyFacts: ["No-fault insurance creates unique claim procedures", "Auto industry drives commercial logistics demand", "Winter weather causes seasonal delivery challenges"]
   },
   {
     name: "Minnesota",
-    abbr: "MN",
+    abbrev: "MN",
     slug: "minnesota",
     statOfLimitations: "6 years",
     faultSystem: "Modified comparative (51%)",
     minInsurance: "30/60/10",
-    deliveryTruckRegulations: "State-regulated since 2015",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2015,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["6-year statute of limitations", "No-fault PIP insurance", "Minneapolis-St. Paul has high Delivery Truck density"],
-    majorDeliveryTruckMarkets: ["Minneapolis", "St. Paul", "Rochester", "Duluth"],
-    annualDeliveryTruckAccidents: 1850,
-    uniqueFacts: ["6-year statute gives maximum time to file claims", "Twin Cities are major Delivery Truck market", "Mall of America drives significant Delivery Truck traffic"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["6-year statute of limitations - one of longest", "No-fault PIP insurance", "Cannot recover if 51% or more at fault"],
+    majorDeliveryMarkets: ["Minneapolis", "St. Paul", "Rochester", "Duluth"],
+    annualDeliveryAccidents: 2850,
+    deliveryHubs: ["Target headquarters drives logistics", "Amazon fulfillment center in Shakopee", "Mall of America creates delivery demand"],
+    keyFacts: ["6-year statute gives maximum time to file claims", "Target corporate headquarters creates logistics hub", "Extreme winter weather affects delivery operations"]
   },
   {
     name: "Mississippi",
-    abbr: "MS",
+    abbrev: "MS",
     slug: "mississippi",
     statOfLimitations: "3 years",
     faultSystem: "Pure comparative negligence",
     minInsurance: "25/50/25",
-    deliveryTruckRegulations: "State-regulated since 2016",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2016,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["HB 1381 established Commercial Vehicle rules", "Limited urban areas for Delivery Truck"],
-    majorDeliveryTruckMarkets: ["Jackson", "Gulfport", "Biloxi"],
-    annualDeliveryTruckAccidents: 380,
-    uniqueFacts: ["Gulf Coast casinos drive Delivery Truck demand", "Pure comparative negligence is favorable for victims", "Limited service outside metro areas"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Pure comparative negligence is favorable for victims", "3-year statute provides good time to file"],
+    majorDeliveryMarkets: ["Jackson", "Gulfport", "Biloxi"],
+    annualDeliveryAccidents: 880,
+    deliveryHubs: ["Limited major fulfillment infrastructure", "Gulf Coast drives regional distribution"],
+    keyFacts: ["Pure comparative negligence allows recovery even if mostly at fault", "Rural areas have limited delivery service"]
   },
   {
     name: "Missouri",
-    abbr: "MO",
+    abbrev: "MO",
     slug: "missouri",
     statOfLimitations: "5 years",
     faultSystem: "Pure comparative negligence",
     minInsurance: "25/50/25",
-    deliveryTruckRegulations: "State-regulated since 2017",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2017,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["5-year statute of limitations", "Kansas City spans state line", "St. Louis has high Delivery Truck density"],
-    majorDeliveryTruckMarkets: ["St. Louis", "Kansas City", "Springfield", "Columbia"],
-    annualDeliveryTruckAccidents: 2400,
-    uniqueFacts: ["5-year statute is second longest in US", "Pure comparative negligence favors victims", "Two major metro areas drive Delivery Truck demand"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["5-year statute of limitations - second longest in US", "Pure comparative negligence is very favorable"],
+    majorDeliveryMarkets: ["St. Louis", "Kansas City", "Springfield", "Columbia"],
+    annualDeliveryAccidents: 4200,
+    deliveryHubs: ["St. Louis is major distribution hub", "Kansas City logistics corridor", "Amazon expanding in both metros"],
+    keyFacts: ["5-year statute is second longest in US", "Pure comparative negligence is favorable for victims", "Central US location makes it distribution hub"]
   },
   {
     name: "Montana",
-    abbr: "MT",
+    abbrev: "MT",
     slug: "montana",
     statOfLimitations: "3 years",
     faultSystem: "Modified comparative (51%)",
     minInsurance: "25/50/20",
-    deliveryTruckRegulations: "State-regulated since 2015",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2015,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["HB 390 established early regulations", "Very limited service outside cities", "Tourism creates seasonal demand"],
-    majorDeliveryTruckMarkets: ["Billings", "Missoula", "Great Falls", "Bozeman"],
-    annualDeliveryTruckAccidents: 120,
-    uniqueFacts: ["Ski resort areas have seasonal Delivery Truck spikes", "Glacier National Park tourism drives demand", "Very limited rural coverage"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Cannot recover if 51% or more at fault", "Vast rural areas with limited coverage"],
+    majorDeliveryMarkets: ["Billings", "Missoula", "Great Falls", "Bozeman"],
+    annualDeliveryAccidents: 420,
+    deliveryHubs: ["Limited fulfillment infrastructure", "USPS primary for rural areas"],
+    keyFacts: ["Low population density limits delivery services", "Tourism to Glacier creates seasonal demand"]
   },
   {
     name: "Nebraska",
-    abbr: "NE",
+    abbrev: "NE",
     slug: "nebraska",
     statOfLimitations: "4 years",
     faultSystem: "Modified comparative (50%)",
     minInsurance: "25/50/25",
-    deliveryTruckRegulations: "State-regulated since 2015",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2015,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["4-year statute of limitations", "College football creates surge demand"],
-    majorDeliveryTruckMarkets: ["Omaha", "Lincoln"],
-    annualDeliveryTruckAccidents: 480,
-    uniqueFacts: ["Nebraska football games create massive Delivery Truck surges", "4-year statute is favorable for victims", "Omaha is growing market"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["4-year statute of limitations is favorable", "Cannot recover if 50% or more at fault"],
+    majorDeliveryMarkets: ["Omaha", "Lincoln"],
+    annualDeliveryAccidents: 880,
+    deliveryHubs: ["Omaha is regional distribution hub", "Central US location attracts logistics"],
+    keyFacts: ["4-year statute is favorable for victims", "Omaha is growing e-commerce market"]
   },
   {
     name: "Nevada",
-    abbr: "NV",
+    abbrev: "NV",
     slug: "nevada",
     statOfLimitations: "2 years",
     faultSystem: "Modified comparative (51%)",
     minInsurance: "25/50/20",
-    deliveryTruckRegulations: "State-regulated since 2015",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2015,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["Las Vegas is one of top Delivery Truck markets globally", "McCarran Airport has massive Delivery Truck volume", "24/7 demand from casinos and entertainment"],
-    majorDeliveryTruckMarkets: ["Las Vegas", "Reno", "Henderson", "North Las Vegas"],
-    annualDeliveryTruckAccidents: 6500,
-    uniqueFacts: ["Las Vegas has highest Delivery Truck usage per capita in US", "24/7 casino and entertainment demand", "Conventions and tourism drive massive volume", "McCarran Airport is one of busiest for Delivery Truck pickups"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Cannot recover if 51% or more at fault", "Las Vegas conventions create delivery demand surges"],
+    majorDeliveryMarkets: ["Las Vegas", "Reno", "Henderson", "North Las Vegas"],
+    annualDeliveryAccidents: 3800,
+    deliveryHubs: ["Amazon massive fulfillment in Las Vegas", "Convention center demands drive delivery", "Growing Reno logistics hub"],
+    keyFacts: ["Las Vegas is major e-commerce fulfillment hub", "Convention business creates delivery demand spikes", "24/7 city means round-the-clock delivery operations"]
   },
   {
     name: "New Hampshire",
-    abbr: "NH",
+    abbrev: "NH",
     slug: "new-hampshire",
     statOfLimitations: "3 years",
     faultSystem: "Modified comparative (51%)",
     minInsurance: "25/50/25",
-    deliveryTruckRegulations: "State-regulated since 2016",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2016,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["SB 302 established Commercial Vehicle rules", "Limited service outside southern NH"],
-    majorDeliveryTruckMarkets: ["Manchester", "Nashua", "Concord"],
-    annualDeliveryTruckAccidents: 220,
-    uniqueFacts: ["Boston commuter demand drives southern NH usage", "Ski season creates winter surges", "Limited rural coverage"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Cannot recover if 51% or more at fault", "Limited service outside southern NH"],
+    majorDeliveryMarkets: ["Manchester", "Nashua", "Concord"],
+    annualDeliveryAccidents: 620,
+    deliveryHubs: ["Amazon in Nashua area", "Boston logistics spillover"],
+    keyFacts: ["Southern NH has strong Boston commuter connection", "No sales tax drives online shopping and deliveries"]
   },
   {
     name: "New Jersey",
-    abbr: "NJ",
+    abbrev: "NJ",
     slug: "new-jersey",
     statOfLimitations: "2 years",
     faultSystem: "Modified comparative (51%)",
     minInsurance: "15/30/5",
-    deliveryTruckRegulations: "State-regulated since 2017",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2017,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["A3695 established Commercial Vehicle framework", "No-fault PIP insurance", "NYC commuter traffic creates high demand", "Newark Airport has designated Delivery Truck areas"],
-    majorDeliveryTruckMarkets: ["Newark", "Jersey City", "Paterson", "Trenton", "Hoboken"],
-    annualDeliveryTruckAccidents: 5200,
-    uniqueFacts: ["NYC commuter demand drives massive Delivery Truck usage", "No-fault insurance adds claim complexity", "One of most densely populated states"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["No-fault PIP insurance", "Cannot recover if 51% or more at fault", "Dense population creates delivery challenges"],
+    majorDeliveryMarkets: ["Newark", "Jersey City", "Paterson", "Trenton", "Hoboken"],
+    annualDeliveryAccidents: 7200,
+    deliveryHubs: ["Port Newark is major East Coast hub", "Multiple Amazon fulfillment centers", "Dense NJ Turnpike logistics corridor"],
+    keyFacts: ["Densest state - creates delivery truck congestion", "Port Newark drives logistics industry", "NYC metro spillover creates high delivery demand"]
   },
   {
     name: "New Mexico",
-    abbr: "NM",
+    abbrev: "NM",
     slug: "new-mexico",
     statOfLimitations: "3 years",
     faultSystem: "Pure comparative negligence",
     minInsurance: "25/50/10",
-    deliveryTruckRegulations: "State-regulated since 2016",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2016,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["HB 168 established Commercial Vehicle rules", "Limited coverage outside Albuquerque and Santa Fe"],
-    majorDeliveryTruckMarkets: ["Albuquerque", "Santa Fe", "Las Cruces"],
-    annualDeliveryTruckAccidents: 580,
-    uniqueFacts: ["Tourism to Santa Fe drives Delivery Truck demand", "Pure comparative negligence favors victims", "Limited rural coverage"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Pure comparative negligence is favorable for victims", "Limited coverage outside major cities"],
+    majorDeliveryMarkets: ["Albuquerque", "Santa Fe", "Las Cruces"],
+    annualDeliveryAccidents: 980,
+    deliveryHubs: ["Amazon expanding in Albuquerque", "I-40 corridor logistics"],
+    keyFacts: ["Pure comparative negligence allows recovery even if mostly at fault", "Rural areas have limited delivery services"]
   },
   {
     name: "New York",
-    abbr: "NY",
+    abbrev: "NY",
     slug: "new-york",
     statOfLimitations: "3 years",
     faultSystem: "Pure comparative negligence",
     minInsurance: "25/50/10",
-    deliveryTruckRegulations: "State-regulated since 2017",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2017,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$75,000 per person / $150,000 per accident",
-      activeDelivery: "$1,250,000 liability coverage"
-    },
-    uniqueLaws: ["NYC has highest insurance requirements in nation", "TLC regulates NYC Delivery Truck separately", "No-fault PIP insurance", "Congestion pricing affects Delivery Truck costs"],
-    majorDeliveryTruckMarkets: ["New York City", "Buffalo", "Rochester", "Syracuse", "Albany"],
-    annualDeliveryTruckAccidents: 22000,
-    uniqueFacts: ["NYC is largest Delivery Truck market in the world", "Highest insurance requirements in US ($1.25M)", "TLC adds extra regulatory layer in NYC", "No-fault insurance complicates claims"]
+    commercialVehicleMinInsurance: "$750,000+ for commercial vehicles",
+    uniqueLaws: ["NYC has highest commercial vehicle insurance requirements", "Pure comparative negligence is favorable", "No-fault PIP insurance"],
+    majorDeliveryMarkets: ["New York City", "Buffalo", "Rochester", "Syracuse", "Albany"],
+    annualDeliveryAccidents: 24500,
+    deliveryHubs: ["NYC is largest delivery market in US", "Multiple massive Amazon facilities across state", "JFK and Newark air cargo hubs"],
+    keyFacts: ["NYC has highest delivery truck accident rate in nation", "Pure comparative negligence allows partial recovery", "Dense urban environment creates constant delivery conflicts"]
   },
   {
     name: "North Carolina",
-    abbr: "NC",
+    abbrev: "NC",
     slug: "north-carolina",
     statOfLimitations: "3 years",
     faultSystem: "Contributory negligence",
     minInsurance: "30/60/25",
-    deliveryTruckRegulations: "State-regulated since 2015",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2015,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["Contributory negligence is harsh barrier", "HB 389 established Commercial Vehicle rules", "Charlotte is major banking center with high business Delivery Truck"],
-    majorDeliveryTruckMarkets: ["Charlotte", "Raleigh", "Durham", "Greensboro", "Wilmington"],
-    annualDeliveryTruckAccidents: 3800,
-    uniqueFacts: ["Contributory negligence makes claims very difficult", "Research Triangle has high tech worker Delivery Truck usage", "Charlotte banking district drives business demand"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Contributory negligence is extremely harsh barrier", "Any fault can bar your claim entirely"],
+    majorDeliveryMarkets: ["Charlotte", "Raleigh", "Durham", "Greensboro", "Wilmington"],
+    annualDeliveryAccidents: 5800,
+    deliveryHubs: ["Charlotte is major East Coast distribution hub", "Amazon expanding throughout Triangle", "Research Triangle tech creates delivery demand"],
+    keyFacts: ["Contributory negligence makes claims very difficult", "Charlotte is growing logistics hub", "Research Triangle tech industry drives delivery demand"]
   },
   {
     name: "North Dakota",
-    abbr: "ND",
+    abbrev: "ND",
     slug: "north-dakota",
     statOfLimitations: "6 years",
     faultSystem: "Modified comparative (50%)",
     minInsurance: "25/50/25",
-    deliveryTruckRegulations: "State-regulated since 2015",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2015,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["6-year statute of limitations", "No-fault insurance", "Very limited coverage outside cities"],
-    majorDeliveryTruckMarkets: ["Fargo", "Bismarck", "Grand Forks"],
-    annualDeliveryTruckAccidents: 95,
-    uniqueFacts: ["6-year statute is most favorable for victims", "Oil boom areas had temporary Delivery Truck surges", "Very limited service statewide"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["6-year statute of limitations - one of longest", "No-fault insurance", "Cannot recover if 50% or more at fault"],
+    majorDeliveryMarkets: ["Fargo", "Bismarck", "Grand Forks"],
+    annualDeliveryAccidents: 295,
+    deliveryHubs: ["Limited fulfillment infrastructure", "USPS primary for rural areas"],
+    keyFacts: ["6-year statute is very favorable for victims", "Low population limits delivery services", "Extreme weather affects delivery operations"]
   },
   {
     name: "Ohio",
-    abbr: "OH",
+    abbrev: "OH",
     slug: "ohio",
     statOfLimitations: "2 years",
     faultSystem: "Modified comparative (51%)",
     minInsurance: "25/50/25",
-    deliveryTruckRegulations: "State-regulated since 2015",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2015,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["HB 237 established comprehensive Commercial Vehicle rules", "Multiple major metros with high Delivery Truck density"],
-    majorDeliveryTruckMarkets: ["Columbus", "Cleveland", "Cincinnati", "Toledo", "Akron"],
-    annualDeliveryTruckAccidents: 4200,
-    uniqueFacts: ["Columbus is one of fastest-growing Delivery Truck markets", "Ohio State football creates massive surges", "Multiple metro areas each have strong Delivery Truck presence"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Cannot recover if 51% or more at fault", "Strong trucking industry presence"],
+    majorDeliveryMarkets: ["Columbus", "Cleveland", "Cincinnati", "Toledo", "Akron"],
+    annualDeliveryAccidents: 6200,
+    deliveryHubs: ["Columbus is Amazon's fastest growing fulfillment market", "Cleveland distribution hub", "Cincinnati logistics corridor"],
+    keyFacts: ["Columbus is one of fastest-growing e-commerce markets", "Central location makes it distribution hub", "Multiple major metro areas create high delivery traffic"]
   },
   {
     name: "Oklahoma",
-    abbr: "OK",
+    abbrev: "OK",
     slug: "oklahoma",
     statOfLimitations: "2 years",
     faultSystem: "Modified comparative (51%)",
     minInsurance: "25/50/25",
-    deliveryTruckRegulations: "State-regulated since 2015",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2015,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["SB 316 established Commercial Vehicle framework", "Oklahoma City and Tulsa are primary markets"],
-    majorDeliveryTruckMarkets: ["Oklahoma City", "Tulsa", "Norman"],
-    annualDeliveryTruckAccidents: 920,
-    uniqueFacts: ["University of Oklahoma games drive Norman Delivery Truck spikes", "Oil industry workers use Delivery Truck frequently", "Limited rural coverage"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Cannot recover if 51% or more at fault", "Oil industry drives commercial vehicle traffic"],
+    majorDeliveryMarkets: ["Oklahoma City", "Tulsa", "Norman"],
+    annualDeliveryAccidents: 1620,
+    deliveryHubs: ["Amazon expanding in OKC", "I-44 and I-40 corridor logistics"],
+    keyFacts: ["Central US location attracts distribution", "Oil industry creates commercial vehicle presence"]
   },
   {
     name: "Oregon",
-    abbr: "OR",
+    abbrev: "OR",
     slug: "oregon",
     statOfLimitations: "2 years",
     faultSystem: "Modified comparative (51%)",
     minInsurance: "25/50/20",
-    deliveryTruckRegulations: "State-regulated since 2015",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2015,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["HB 2995 established Commercial Vehicle rules", "Portland has very high Delivery Truck usage", "Strong bicycle culture creates interaction risks"],
-    majorDeliveryTruckMarkets: ["Portland", "Eugene", "Salem", "Bend"],
-    annualDeliveryTruckAccidents: 2100,
-    uniqueFacts: ["Portland is one of most Delivery Truck-friendly cities", "Strong public transit integration", "Bicycle and Delivery Truck conflicts are common"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Cannot recover if 51% or more at fault", "Strong bicycle culture creates interaction risks with delivery trucks"],
+    majorDeliveryMarkets: ["Portland", "Eugene", "Salem", "Bend"],
+    annualDeliveryAccidents: 3100,
+    deliveryHubs: ["Amazon PDX fulfillment centers", "Port of Portland logistics", "Nike headquarters drives B2B delivery"],
+    keyFacts: ["Portland has high bicycle-delivery truck conflicts", "Port of Portland drives logistics industry", "Tech industry in Portland area creates delivery demand"]
   },
   {
     name: "Pennsylvania",
-    abbr: "PA",
+    abbrev: "PA",
     slug: "pennsylvania",
     statOfLimitations: "2 years",
     faultSystem: "Modified comparative (51%)",
     minInsurance: "15/30/5",
-    deliveryTruckRegulations: "State-regulated since 2016",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2016,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["Act 164 established comprehensive Commercial Vehicle rules", "Philadelphia has high Delivery Truck density", "PHL Airport has designated pickup zones", "No-fault insurance option"],
-    majorDeliveryTruckMarkets: ["Philadelphia", "Pittsburgh", "Harrisburg", "Allentown"],
-    annualDeliveryTruckAccidents: 5800,
-    uniqueFacts: ["Philadelphia is major East Coast Delivery Truck market", "Pittsburgh has autonomous vehicle testing", "No-fault insurance can simplify claims"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Cannot recover if 51% or more at fault", "No-fault insurance option", "Philadelphia has special commercial vehicle rules"],
+    majorDeliveryMarkets: ["Philadelphia", "Pittsburgh", "Harrisburg", "Allentown"],
+    annualDeliveryAccidents: 8200,
+    deliveryHubs: ["Philadelphia is major East Coast logistics hub", "Amazon expanding across state", "Pittsburgh autonomous vehicle testing"],
+    keyFacts: ["Philadelphia is major delivery market", "Pittsburgh has autonomous delivery vehicle testing", "Pennsylvania Turnpike is major logistics corridor"]
   },
   {
     name: "Rhode Island",
-    abbr: "RI",
+    abbrev: "RI",
     slug: "rhode-island",
     statOfLimitations: "3 years",
     faultSystem: "Pure comparative negligence",
     minInsurance: "25/50/25",
-    deliveryTruckRegulations: "State-regulated since 2016",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2016,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["Small state with concentrated Delivery Truck", "Providence is primary market"],
-    majorDeliveryTruckMarkets: ["Providence", "Warwick", "Newport"],
-    annualDeliveryTruckAccidents: 340,
-    uniqueFacts: ["Smallest state but high Delivery Truck per capita", "Pure comparative negligence favors victims", "Boston proximity increases demand"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Pure comparative negligence is favorable", "Small state with concentrated delivery activity"],
+    majorDeliveryMarkets: ["Providence", "Warwick", "Newport"],
+    annualDeliveryAccidents: 540,
+    deliveryHubs: ["Boston logistics spillover", "Port of Providence"],
+    keyFacts: ["Smallest state but high delivery per capita", "Pure comparative negligence is favorable for victims"]
   },
   {
     name: "South Carolina",
-    abbr: "SC",
+    abbrev: "SC",
     slug: "south-carolina",
     statOfLimitations: "3 years",
     faultSystem: "Modified comparative (51%)",
     minInsurance: "25/50/25",
-    deliveryTruckRegulations: "State-regulated since 2015",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2015,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["H 3525 established early Commercial Vehicle rules", "Charleston tourism drives demand", "Myrtle Beach has seasonal surges"],
-    majorDeliveryTruckMarkets: ["Charleston", "Columbia", "Greenville", "Myrtle Beach"],
-    annualDeliveryTruckAccidents: 1650,
-    uniqueFacts: ["Charleston and Myrtle Beach tourism creates high seasonal demand", "Early adopter of Delivery Truck regulations", "College towns have strong usage"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Cannot recover if 51% or more at fault", "Charleston and Myrtle Beach tourism creates delivery demand"],
+    majorDeliveryMarkets: ["Charleston", "Columbia", "Greenville", "Myrtle Beach"],
+    annualDeliveryAccidents: 2650,
+    deliveryHubs: ["Charleston port drives logistics", "Amazon in West Columbia", "BMW/Volvo manufacturing creates B2B delivery"],
+    keyFacts: ["Charleston port is fastest growing on East Coast", "Tourism creates seasonal delivery demand", "Manufacturing growth drives commercial delivery"]
   },
   {
     name: "South Dakota",
-    abbr: "SD",
+    abbrev: "SD",
     slug: "south-dakota",
     statOfLimitations: "3 years",
     faultSystem: "Modified comparative (slight)",
     minInsurance: "25/50/25",
-    deliveryTruckRegulations: "State-regulated since 2016",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2016,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["SB 28 established Commercial Vehicle rules", "Very limited coverage statewide", "Sturgis Rally creates massive annual surge"],
-    majorDeliveryTruckMarkets: ["Sioux Falls", "Rapid City"],
-    annualDeliveryTruckAccidents: 85,
-    uniqueFacts: ["Sturgis Motorcycle Rally creates one of biggest annual Delivery Truck surges", "Very limited year-round service", "Tourism to Mount Rushmore drives Rapid City demand"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Slight vs gross negligence comparison used", "Very limited coverage statewide"],
+    majorDeliveryMarkets: ["Sioux Falls", "Rapid City"],
+    annualDeliveryAccidents: 285,
+    deliveryHubs: ["Limited fulfillment infrastructure", "USPS primary for rural areas"],
+    keyFacts: ["Low population limits delivery services", "Mount Rushmore tourism creates Rapid City demand"]
   },
   {
     name: "Tennessee",
-    abbr: "TN",
+    abbrev: "TN",
     slug: "tennessee",
     statOfLimitations: "1 year",
     faultSystem: "Modified comparative (50%)",
     minInsurance: "25/50/15",
-    deliveryTruckRegulations: "State-regulated since 2015",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2015,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["ONLY 1 YEAR statute of limitations - same as Louisiana", "Nashville has extremely high Delivery Truck usage", "Music industry drives 24/7 demand"],
-    majorDeliveryTruckMarkets: ["Nashville", "Memphis", "Knoxville", "Chattanooga"],
-    annualDeliveryTruckAccidents: 3200,
-    uniqueFacts: ["1-YEAR STATUTE OF LIMITATIONS - Act immediately!", "Nashville is one of top bachelorette party destinations - massive Delivery Truck demand", "Memphis and Nashville both have vibrant nightlife driving 24/7 usage"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["ONLY 1 YEAR statute of limitations - ACT IMMEDIATELY", "Cannot recover if 50% or more at fault"],
+    majorDeliveryMarkets: ["Nashville", "Memphis", "Knoxville", "Chattanooga"],
+    annualDeliveryAccidents: 4800,
+    deliveryHubs: ["FedEx worldwide headquarters in Memphis", "Nashville rapid growth attracts distribution", "Amazon expanding in Middle Tennessee"],
+    keyFacts: ["1-YEAR DEADLINE - same as Louisiana - you must act fast!", "Memphis is FedEx global headquarters - massive delivery traffic", "Nashville music/tourism creates high delivery demand"]
   },
   {
     name: "Texas",
-    abbr: "TX",
+    abbrev: "TX",
     slug: "texas",
     statOfLimitations: "2 years",
     faultSystem: "Modified comparative (51%)",
     minInsurance: "30/60/25",
-    deliveryTruckRegulations: "State-regulated since 2017",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2017,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["HB 100 established statewide rules", "Austin was early Delivery Truck battleground", "Multiple major metros with high density", "Higher insurance minimums than many states"],
-    majorDeliveryTruckMarkets: ["Houston", "Dallas", "San Antonio", "Austin", "Fort Worth", "El Paso"],
-    annualDeliveryTruckAccidents: 14000,
-    uniqueFacts: ["Second largest Delivery Truck market after California", "Austin had famous Delivery Truck/Delivery Truck departure and return", "Houston and Dallas are among largest US markets", "SXSW creates massive annual Austin surge"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Cannot recover if 51% or more at fault", "Higher insurance minimums than many states"],
+    majorDeliveryMarkets: ["Houston", "Dallas", "San Antonio", "Austin", "Fort Worth", "El Paso"],
+    annualDeliveryAccidents: 18500,
+    deliveryHubs: ["Multiple massive Amazon fulfillment centers", "Houston port is largest in Gulf", "DFW logistics corridor", "Tesla deliveries from Austin"],
+    keyFacts: ["Second largest delivery truck accident volume after California", "Massive geographic size creates extensive delivery routes", "Port of Houston drives Gulf logistics"]
   },
   {
     name: "Utah",
-    abbr: "UT",
+    abbrev: "UT",
     slug: "utah",
     statOfLimitations: "4 years",
     faultSystem: "Modified comparative (50%)",
     minInsurance: "25/65/15",
-    deliveryTruckRegulations: "State-regulated since 2015",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2015,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["HB 389 established early regulations", "Salt Lake City is growing tech hub", "Ski resorts drive seasonal demand"],
-    majorDeliveryTruckMarkets: ["Salt Lake City", "Provo", "Park City", "Ogden"],
-    annualDeliveryTruckAccidents: 1200,
-    uniqueFacts: ["4-year statute of limitations is favorable", "Ski season creates massive Park City demand", "Tech industry growth driving Salt Lake Delivery Truck boom"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["4-year statute of limitations is favorable", "Cannot recover if 50% or more at fault"],
+    majorDeliveryMarkets: ["Salt Lake City", "Provo", "Park City", "Ogden"],
+    annualDeliveryAccidents: 2100,
+    deliveryHubs: ["Amazon fulfillment in Salt Lake area", "Growing tech sector in Salt Lake valley"],
+    keyFacts: ["4-year statute of limitations is favorable", "Tech industry growth driving delivery demand", "Ski season creates Park City delivery surge"]
   },
   {
     name: "Vermont",
-    abbr: "VT",
+    abbrev: "VT",
     slug: "vermont",
     statOfLimitations: "3 years",
     faultSystem: "Modified comparative (51%)",
     minInsurance: "25/50/10",
-    deliveryTruckRegulations: "State-regulated since 2017",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2017,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["Act 60 established Commercial Vehicle rules", "Very limited coverage outside Burlington"],
-    majorDeliveryTruckMarkets: ["Burlington", "Montpelier"],
-    annualDeliveryTruckAccidents: 75,
-    uniqueFacts: ["Smallest Delivery Truck market in US", "Ski season creates seasonal surges", "Burlington has majority of service"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Cannot recover if 51% or more at fault", "Very limited coverage outside Burlington"],
+    majorDeliveryMarkets: ["Burlington", "Montpelier"],
+    annualDeliveryAccidents: 275,
+    deliveryHubs: ["Limited fulfillment infrastructure", "USPS primary for rural areas"],
+    keyFacts: ["Small population limits delivery infrastructure", "Ski season creates seasonal delivery demand"]
   },
   {
     name: "Virginia",
-    abbr: "VA",
+    abbrev: "VA",
     slug: "virginia",
     statOfLimitations: "2 years",
     faultSystem: "Contributory negligence",
     minInsurance: "25/50/20",
-    deliveryTruckRegulations: "State-regulated since 2015",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2015,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["Contributory negligence makes recovery extremely difficult", "DC metro area extends into VA", "Dulles and Reagan airports have high Delivery Truck volume"],
-    majorDeliveryTruckMarkets: ["Virginia Beach", "Norfolk", "Richmond", "Arlington", "Alexandria"],
-    annualDeliveryTruckAccidents: 3400,
-    uniqueFacts: ["Contributory negligence is major barrier to claims", "DC commuters create massive Northern Virginia demand", "Beach tourism drives Virginia Beach usage"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Contributory negligence makes recovery extremely difficult", "Any fault can bar your claim entirely", "DC metro area creates jurisdiction issues"],
+    majorDeliveryMarkets: ["Virginia Beach", "Norfolk", "Richmond", "Arlington", "Alexandria"],
+    annualDeliveryAccidents: 5400,
+    deliveryHubs: ["Amazon HQ2 in Arlington drives massive delivery", "Port of Virginia is growing hub", "DC suburbs have high delivery demand"],
+    keyFacts: ["Contributory negligence state - claims very difficult", "Amazon HQ2 creates massive Northern Virginia delivery traffic", "Port of Virginia is major East Coast hub"]
   },
   {
     name: "Washington",
-    abbr: "WA",
+    abbrev: "WA",
     slug: "washington",
     statOfLimitations: "3 years",
     faultSystem: "Pure comparative negligence",
     minInsurance: "25/50/10",
-    deliveryTruckRegulations: "State-regulated since 2015",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2015,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["SB 5550 established Commercial Vehicle framework", "Seattle has very high Delivery Truck usage", "Sea-Tac Airport is major Delivery Truck hub"],
-    majorDeliveryTruckMarkets: ["Seattle", "Tacoma", "Spokane", "Bellevue"],
-    annualDeliveryTruckAccidents: 4800,
-    uniqueFacts: ["Seattle is one of top 10 Delivery Truck markets in US", "Tech industry drives high Delivery Truck adoption", "Pure comparative negligence favors victims"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Pure comparative negligence is very favorable for victims", "Seattle has strong consumer protection laws"],
+    majorDeliveryMarkets: ["Seattle", "Tacoma", "Spokane", "Bellevue"],
+    annualDeliveryAccidents: 6200,
+    deliveryHubs: ["Amazon worldwide headquarters in Seattle", "Port of Seattle logistics", "Microsoft/tech sector delivery demand"],
+    keyFacts: ["Seattle is Amazon global headquarters - massive delivery traffic", "Pure comparative negligence is favorable for victims", "Port of Seattle drives Pacific trade logistics"]
   },
   {
     name: "West Virginia",
-    abbr: "WV",
+    abbrev: "WV",
     slug: "west-virginia",
     statOfLimitations: "2 years",
     faultSystem: "Modified comparative (50%)",
     minInsurance: "25/50/25",
-    deliveryTruckRegulations: "State-regulated since 2016",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2016,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["SB 539 established Commercial Vehicle rules", "Very limited coverage outside Charleston and Morgantown"],
-    majorDeliveryTruckMarkets: ["Charleston", "Morgantown", "Huntington"],
-    annualDeliveryTruckAccidents: 180,
-    uniqueFacts: ["WVU campus drives Morgantown Delivery Truck demand", "Very limited rural coverage", "Mountain terrain creates unique driving hazards"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Cannot recover if 50% or more at fault", "Mountain terrain creates delivery challenges"],
+    majorDeliveryMarkets: ["Charleston", "Morgantown", "Huntington"],
+    annualDeliveryAccidents: 580,
+    deliveryHubs: ["Limited fulfillment infrastructure", "Mountain roads create delivery hazards"],
+    keyFacts: ["Mountain terrain creates unique delivery truck hazards", "Limited major fulfillment infrastructure"]
   },
   {
     name: "Wisconsin",
-    abbr: "WI",
+    abbrev: "WI",
     slug: "wisconsin",
     statOfLimitations: "3 years",
     faultSystem: "Modified comparative (51%)",
     minInsurance: "25/50/10",
-    deliveryTruckRegulations: "State-regulated since 2015",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2015,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["Act 278 established Commercial Vehicle framework", "Packers games create Green Bay surges", "Madison is major college market"],
-    majorDeliveryTruckMarkets: ["Milwaukee", "Madison", "Green Bay"],
-    annualDeliveryTruckAccidents: 1450,
-    uniqueFacts: ["Packers football creates massive Green Bay surge demand", "UW-Madison campus has high student Delivery Truck usage", "Winter weather affects year-round safety"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["Cannot recover if 51% or more at fault", "Winter weather creates seasonal hazards"],
+    majorDeliveryMarkets: ["Milwaukee", "Madison", "Green Bay"],
+    annualDeliveryAccidents: 2450,
+    deliveryHubs: ["Amazon in Kenosha", "Milwaukee distribution hub"],
+    keyFacts: ["Winter weather causes seasonal delivery challenges", "Growing e-commerce presence in Milwaukee area"]
   },
   {
     name: "Wyoming",
-    abbr: "WY",
+    abbrev: "WY",
     slug: "wyoming",
     statOfLimitations: "4 years",
     faultSystem: "Modified comparative (50%)",
     minInsurance: "25/50/20",
-    deliveryTruckRegulations: "State-regulated since 2017",
-    commercialVehicleLaw: true,
-    commercialVehicleLawYear: 2017,
-    deliveryTruckInsuranceTiers: {
-      offDuty: "Driver's personal insurance",
-      loadingZone: "$50,000 per person / $100,000 per accident",
-      activeDelivery: "$1,000,000 liability coverage"
-    },
-    uniqueLaws: ["Very limited coverage statewide", "Tourism to Yellowstone drives Jackson demand"],
-    majorDeliveryTruckMarkets: ["Cheyenne", "Casper", "Jackson"],
-    annualDeliveryTruckAccidents: 45,
-    uniqueFacts: ["Smallest population state with very limited Delivery Truck", "4-year statute of limitations is favorable", "Jackson Hole tourism creates seasonal spikes"]
+    commercialVehicleMinInsurance: "$750,000 for commercial vehicles",
+    uniqueLaws: ["4-year statute of limitations is favorable", "Vast rural areas with very limited coverage"],
+    majorDeliveryMarkets: ["Cheyenne", "Casper", "Jackson"],
+    annualDeliveryAccidents: 245,
+    deliveryHubs: ["Very limited fulfillment infrastructure", "USPS primary for rural areas"],
+    keyFacts: ["Lowest population state - very limited delivery services", "Jackson Hole tourism creates seasonal demand", "4-year statute is favorable"]
   }
 ];
 
@@ -1061,6 +749,6 @@ export function getLongSOLStates(): State[] {
   });
 }
 
-export function getTopDeliveryTruckMarkets(): State[] {
-  return states.filter(s => s.annualDeliveryTruckAccidents >= 5000).sort((a, b) => b.annualDeliveryTruckAccidents - a.annualDeliveryTruckAccidents);
+export function getTopDeliveryMarkets(): State[] {
+  return states.filter(s => s.annualDeliveryAccidents >= 5000).sort((a, b) => b.annualDeliveryAccidents - a.annualDeliveryAccidents);
 }
